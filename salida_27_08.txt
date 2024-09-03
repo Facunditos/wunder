@@ -1,0 +1,92 @@
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+06c599115fe349848599115fe309845f
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+9018fead0aa34de798fead0aa32de757
+se cargaron todas las observacines de ISANNICO24.
+el último día con observaciones fue 2017:5:27
+cambio de api key por llamada 1400. Vieja api key
+c63c8138c1b241c4bc8138c1b241c4b4
+se cargaron todas las observacines de ISANTA43.
+el último día con observaciones fue 2019:5:4
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+ff3d7deb35a444ebbd7deb35a444ebbd
+se cargaron todas las observacines de ISANTA203.
+el último día con observaciones fue 2020:9:6
+se cargaron todas las observacines de ISANTA538.
+el último día con observaciones fue 2024:7:19
+cambio de api key por llamada 1400. Vieja api key
+2bd1dee00a454ebe91dee00a458ebe79
+se cargaron todas las observacines de ISANTA1211.
+el último día con observaciones fue 2023:3:16
+cambio de api key por llamada 1400. Vieja api key
+e2aa52fada2f4902aa52fada2fa902e1
+cambio de api key por llamada 1400. Vieja api key
+3ad659ace1134a8f9659ace113aa8f81
+cambio de api key por llamada 1400. Vieja api key
+14527949de8b4a11927949de8bfa113d
+se cargaron todas las observacines de ISANTAFE23.
+el último día con observaciones fue 2012:4:26
+cambio de api key por llamada 1400. Vieja api key
+3f3b3235558d473dbb3235558df73d22
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+40f85fd26c3d4861b85fd26c3dc86146
+cambio de api key por llamada 1400. Vieja api key
+33914afbb3aa4bad914afbb3aaebad27
+se cargaron todas las observacines de ISANTAFE60.
+el último día con observaciones fue 2015:6:27
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+08815bdc1efa41a1815bdc1efa51a139
+cambio de api key por llamada 1400. Vieja api key
+a73d7df1ccf04596bd7df1ccf0f59636
+se cargaron todas las observacines de ISANTAFE105.
+el último día con observaciones fue 2016:10:1
+cambio de api key por llamada 1400. Vieja api key
+8b80656dee6f4fc580656dee6fcfc542
+se cargaron todas las observacines de ISARGE5.
+el último día con observaciones fue 2022:9:23
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+ec77cca0d1b7488bb7cca0d1b7e88bed
+se cargaron todas las observacines de ITORTU3.
+el último día con observaciones fue 2023:1:23
+se cargaron todas las observacines de IUNIND8.
+el último día con observaciones fue 2022:7:22
+se cargaron todas las observacines de IUNINDEP8.
+el último día con observaciones fue 2024:5:17
+cambio de api key por llamada 1400. Vieja api key
+ae6e762c6d084cd4ae762c6d083cd4ae
+se cargaron todas las observacines de IVENAD3.
+el último día con observaciones fue 2022:5:16
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+f4330c3d495243f8b30c3d495263f8a0
+cambio de api key por llamada 1400. Vieja api key
+52f0f4d954c144aab0f4d954c194aa00
+se cargaron todas las observacines de IVILLA133.
+el último día con observaciones fue 2019:4:25
+se cargaron todas las observacines de IVILLA1083.
+el último día con observaciones fue 2023:4:15
+se cargaron todas las observacines de IPREZ1.
+el último día con observaciones fue 2023:12:14
+cambio de api key por llamada 1400. Vieja api key
+cd599783fc4e4d7d999783fc4ecd7d6c
+se cargaron todas las observacines de ICASER41.
+el último día con observaciones fue 2022:8:14
+cambio de api key por llamada 1400. Vieja api key
+e220a3bad8254f49a0a3bad825bf49e3
+se cargaron todas las observacines de ICASER32.
+el último día con observaciones fue 2021:5:10
+El bloque de código se ejecutó exitosamente.
+Total de llamadas:24862
