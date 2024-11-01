@@ -18,7 +18,7 @@ insert into observaciones values
 
 select *
 from observaciones obs
-where id_estacion = 24
+where dia_con_obs =0
 
 select *
 from observaciones obs 
@@ -30,12 +30,23 @@ where (id_estacion =17)
 
 
 
-select *
+select est.stationID,obs.obsTimeLocal , obs.precipTotal ,obs.dia_con_obs 
 from observaciones obs
 join estaciones est
 on obs.id_estacion = est.id_estacion
-where (obs.id_estacion  = 139)
+#where (obs.id_estacion  = 4)
 order by obs.obsTimeLocal DESC;
+
+select obsTimeLocal ,count(*) 
+from observaciones o 
+where dia_con_obs =0
+group by obsTimeLocal 
+
+
+select *
+from observaciones o 
+where id_estacion =17 between '2024-10-29 00:00:00' AND '2024-10-29 23:59:59'
+order by obsTimeLocal 
 
 select distinct o.id_estacion , sum() o.dia_completo 
 from observaciones o 
