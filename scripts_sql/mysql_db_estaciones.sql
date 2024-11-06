@@ -43,10 +43,13 @@ where dia_con_obs =0
 group by obsTimeLocal 
 
 
-select *
-from observaciones o 
-where id_estacion =17 between '2024-10-29 00:00:00' AND '2024-10-29 23:59:59'
-order by obsTimeLocal 
+select est.stationID,est.id_estacion  ,max(obs.obsTimeLocal)
+from observaciones obs 
+join estaciones est
+on obs.id_estacion = est.id_estacion
+where obs.dia_con_obs=1
+group by est.stationID 
+order by est.id_estacion 
 
 select distinct o.id_estacion , sum() o.dia_completo 
 from observaciones o 
