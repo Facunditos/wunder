@@ -6,6 +6,8 @@ CREATE DATABASE estaciones_wunder
 GO*/
 
 
+CREATE DATABASE estaciones_wunder
+
 use estaciones_wunder
 
 
@@ -16,9 +18,14 @@ delete from observaciones;
 insert into observaciones values
 	(1,'2024-07-01 00:04:00',457800.78,0,0);
 
-select *
+select max(obsTimeLocal)
 from observaciones obs
-where dia_con_obs =0
+where id_estacion =7 and obs.dia_con_obs =1 
+order by obsTimeLocal  desc
+
+select SUM(precipTotal_mm)
+from observaciones o 
+
 
 select *
 from observaciones obs 

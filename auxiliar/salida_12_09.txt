@@ -1,0 +1,150 @@
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+06c599115fe349848599115fe309845f
+El bloque de código se ejecutó exitosamente.
+Total de llamadas:674
+Hubo un problema con la conexión al servidor.
+Error número:1.
+Error:('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+9018fead0aa34de798fead0aa32de757
+Hubo un problema con la conexión al servidor.
+Error número:2.
+Error:('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+El bloque de código se ejecutó exitosamente.
+Total de llamadas:1236
+El bloque de código se ejecutó exitosamente.
+Total de llamadas:1716
+El bloque de código se ejecutó exitosamente.
+Total de llamadas:2223
+cambio de api key por llamada 1400. Vieja api key
+c63c8138c1b241c4bc8138c1b241c4b4
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+ff3d7deb35a444ebbd7deb35a444ebbd
+El bloque de código se ejecutó exitosamente.
+Total de llamadas:3599
+El bloque de código se ejecutó exitosamente.
+Total de llamadas:4203
+cambio de api key por llamada 1400. Vieja api key
+2bd1dee00a454ebe91dee00a458ebe79
+El bloque de código se ejecutó exitosamente.
+Total de llamadas:4626
+Hubo un problema con la conexión al servidor.
+Error número:3.
+Error:('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+Hubo un problema con la conexión al servidor.
+Error número:4.
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+06c599115fe349848599115fe309845f
+El bloque de código se ejecutó exitosamente.
+Total de llamadas:674
+Hubo un problema con la conexión al servidor.
+Error número:1.
+Error:('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+9018fead0aa34de798fead0aa32de757
+Hubo un problema con la conexión al servidor.
+Error número:2.
+Error:('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+El bloque de código se ejecutó exitosamente.
+Total de llamadas:1236
+El bloque de código se ejecutó exitosamente.
+Total de llamadas:1716
+El bloque de código se ejecutó exitosamente.
+Total de llamadas:2223
+cambio de api key por llamada 1400. Vieja api key
+c63c8138c1b241c4bc8138c1b241c4b4
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+ff3d7deb35a444ebbd7deb35a444ebbd
+El bloque de código se ejecutó exitosamente.
+Total de llamadas:3599
+El bloque de código se ejecutó exitosamente.
+Total de llamadas:4203
+cambio de api key por llamada 1400. Vieja api key
+2bd1dee00a454ebe91dee00a458ebe79
+El bloque de código se ejecutó exitosamente.
+Total de llamadas:4626
+Hubo un problema con la conexión al servidor.
+Error número:3.
+Error:('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+Hubo un problema con la conexión al servidor.
+Error número:4.
+Error:('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+El bloque de código se ejecutó exitosamente.
+Total de llamadas:5069
+El bloque de código se ejecutó exitosamente.
+Total de llamadas:5480
+cambio de api key por llamada 1400. Vieja api key
+e2aa52fada2f4902aa52fada2fa902e1
+El bloque de código se ejecutó exitosamente.
+Total de llamadas:6921
+cambio de api key por llamada 1400. Vieja api key
+3ad659ace1134a8f9659ace113aa8f81
+El bloque de código se ejecutó exitosamente.
+Total de llamadas:8007
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+14527949de8b4a11927949de8bfa113d
+El bloque de código se ejecutó exitosamente.
+Total de llamadas:9728
+cambio de api key por llamada 1400. Vieja api key
+3f3b3235558d473dbb3235558df73d22
+cambio de api key por llamada 1400. Vieja api key
+40f85fd26c3d4861b85fd26c3dc86146
+El bloque de código se ejecutó exitosamente.
+Total de llamadas:11235
+cambio de api key por llamada 1400. Vieja api key
+33914afbb3aa4bad914afbb3aaebad27
+El bloque de código se ejecutó exitosamente.
+Total de llamadas:12588
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+08815bdc1efa41a1815bdc1efa51a139
+El bloque de código se ejecutó exitosamente.
+Total de llamadas:13602
+El bloque de código se ejecutó exitosamente.
+Total de llamadas:14411
+cambio de api key por llamada 1400. Vieja api key
+a73d7df1ccf04596bd7df1ccf0f59636
+El bloque de código se ejecutó exitosamente.
+Total de llamadas:15035
+cambio de api key por llamada 1400. Vieja api key
+8b80656dee6f4fc580656dee6fcfc542
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+ec77cca0d1b7488bb7cca0d1b7e88bed
+El bloque de código se ejecutó exitosamente.
+Total de llamadas:17847
+cambio de api key por llamada 1400. Vieja api key
+ae6e762c6d084cd4ae762c6d083cd4ae
+El bloque de código se ejecutó exitosamente.
+Total de llamadas:18714
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+f4330c3d495243f8b30c3d495263f8a0
+Hubo un problema con la conexión al servidor.
+Error número:5.
+Error:('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+Hubo un problema con la conexión al servidor.
+Error número:6.
+Error:('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+52f0f4d954c144aab0f4d954c194aa00
+minutos: 294

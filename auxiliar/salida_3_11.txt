@@ -1,0 +1,172 @@
+se cargaron todas las observacines de IADELI1
+se cargaron todas las observacines de IAMENB2
+se cargaron todas las observacines de IARIAS1
+se cargaron todas las observacines de IARMST25
+se cargaron todas las observacines de IBELGR31
+Hubo un problema con la conexión al servidor.
+Error número:1.
+Error:Expecting value: line 1 column 1 (char 0)
+Se aguarda 1 minuto
+se cargaron todas las observacines de IBIGAN11
+se cargaron todas las observacines de IBUSTI3
+se cargaron todas las observacines de ICAADA2
+se cargaron todas las observacines de ICAADA3
+se cargaron todas las observacines de ICALAM23
+se cargaron todas las observacines de ICALAM32
+se cargaron todas las observacines de ICASER12
+se cargaron todas las observacines de ICASER21
+se cargaron todas las observacines de ICASER25
+se cargaron todas las observacines de ICASER34
+se cargaron todas las observacines de ICASER40
+se cargaron todas las observacines de ICASER42
+se cargaron todas las observacines de ICASIL2
+se cargaron todas las observacines de ICOLN10
+se cargaron todas las observacines de ICONST54
+se cargaron todas las observacines de ICONSTIT2
+se cargaron todas las observacines de ICONSTIT3
+se cargaron todas las observacines de ICONSTIT4
+se cargaron todas las observacines de ICORDOBA23
+se cargaron todas las observacines de ICRDOBAV12
+se cargaron todas las observacines de IDEPAR62
+cambio de api key por llamada 1400. Vieja api key
+66d6d2df24cb428a96d2df24cbc28ad4
+se cargaron todas las observacines de IDEPAR77
+se cargaron todas las observacines de IDESPE1
+se cargaron todas las observacines de IDESPE2
+se cargaron todas las observacines de IDIEGO12
+se cargaron todas las observacines de IFUNES8
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+2efc62145baa4503bc62145baac50320
+se cargaron todas las observacines de IGENER96
+se cargaron todas las observacines de IGENER106
+se cargaron todas las observacines de IGENER124
+se cargaron todas las observacines de IGENER126
+se cargaron todas las observacines de IGENER147
+se cargaron todas las observacines de IGENER149
+se cargaron todas las observacines de IGENER180
+se cargaron todas las observacines de IGENER186
+se cargaron todas las observacines de IGENER189
+se cargaron todas las observacines de IGENER220
+se cargaron todas las observacines de IGENER235
+se cargaron todas las observacines de IGENER245
+se cargaron todas las observacines de IGENER296
+se cargaron todas las observacines de IGENER305
+se cargaron todas las observacines de IGENER348
+se cargaron todas las observacines de IGENER364
+se cargaron todas las observacines de IINRIV1
+se cargaron todas las observacines de IIRION3
+se cargaron todas las observacines de IIRION6
+se cargaron todas las observacines de IIRIONDO2
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+17ae9bc6979c4f94ae9bc6979c2f94be
+se cargaron todas las observacines de IISLAV1
+se cargaron todas las observacines de IJOVIT1
+se cargaron todas las observacines de IJUNDD2
+se cargaron todas las observacines de IJUNND3
+se cargaron todas las observacines de IJUNND5
+se cargaron todas las observacines de IJUREZ12
+se cargaron todas las observacines de IJUREZ15
+se cargaron todas las observacines de IJUREZ17
+se cargaron todas las observacines de IJUREZ19
+se cargaron todas las observacines de ILACHI9
+se cargaron todas las observacines de ILASPA72
+se cargaron todas las observacines de ILASPA81
+se cargaron todas las observacines de ILEAND6
+se cargaron todas las observacines de ILEAND17
+se cargaron todas las observacines de ILEAND30
+se cargaron todas las observacines de ILOSMO6
+se cargaron todas las observacines de IMARCO41
+se cargaron todas las observacines de IMARCO44
+se cargaron todas las observacines de IMARCO49
+se cargaron todas las observacines de IMARCOSJ3
+se cargaron todas las observacines de IMELIN1
+se cargaron todas las observacines de IONCAT1
+se cargaron todas las observacines de IPERGA4
+se cargaron todas las observacines de IPERGA17
+se cargaron todas las observacines de IPERGA20
+se cargaron todas las observacines de IPERGA21
+se cargaron todas las observacines de IPERGA22
+cambio de api key por llamada 1400. Vieja api key
+3061cd3105fb4d04a1cd3105fb3d04f5
+se cargaron todas las observacines de IPERGAMI6
+se cargaron todas las observacines de IPRESI18
+se cargaron todas las observacines de IROCUA44
+se cargaron todas las observacines de IROCUA46
+se cargaron todas las observacines de IROCUA49
+se cargaron todas las observacines de IROCUA51
+se cargaron todas las observacines de IROCUART12
+se cargaron todas las observacines de IRODEL10
+se cargaron todas las observacines de IROSAR100
+se cargaron todas las observacines de IROSAR101
+se cargaron todas las observacines de IROSAR103
+se cargaron todas las observacines de IROSAR106
+se cargaron todas las observacines de IROSAR107
+se cargaron todas las observacines de IROSAR110
+se cargaron todas las observacines de IROSAR5
+se cargaron todas las observacines de IROSAR14
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+e973d41675604a8fb3d41675603a8ff9
+se cargaron todas las observacines de IROSAR18
+se cargaron todas las observacines de IROSAR30
+se cargaron todas las observacines de IROSAR38
+se cargaron todas las observacines de IROSAR56
+se cargaron todas las observacines de IROSAR60
+se cargaron todas las observacines de IROSAR62
+se cargaron todas las observacines de IROSAR68
+se cargaron todas las observacines de IROSAR70
+se cargaron todas las observacines de IROSAR84
+se cargaron todas las observacines de IROSAR86
+se cargaron todas las observacines de IROSAR89
+se cargaron todas las observacines de IROSAR97
+se cargaron todas las observacines de IROSAR98
+se cargaron todas las observacines de IROSARIO11
+se cargaron todas las observacines de IROSARIO39
+se cargaron todas las observacines de IROSEG9
+se cargaron todas las observacines de IROSEG16
+se cargaron todas las observacines de IROSEG26
+se cargaron todas las observacines de IROSEG28
+se cargaron todas las observacines de ISANFO4
+se cargaron todas las observacines de ISANJA13
+se cargaron todas las observacines de ISANJAVI8
+se cargaron todas las observacines de ISANJO74
+se cargaron todas las observacines de ISANJU117
+se cargaron todas las observacines de ISANLO49
+se cargaron todas las observacines de ISANLO71
+se cargaron todas las observacines de ISANLORE33
+cambio de api key por llamada 1400. Vieja api key
+8bc93c50250c46aa893c50250c96aadf
+se cargaron todas las observacines de ISANLORE34
+se cargaron todas las observacines de ISANNI7
+se cargaron todas las observacines de ISANNI16
+se cargaron todas las observacines de ISANNI35
+se cargaron todas las observacines de ISANNICO24
+se cargaron todas las observacines de ISANTA43
+se cargaron todas las observacines de ISANTA203
+se cargaron todas las observacines de ISANTA538
+se cargaron todas las observacines de ISANTA1211
+se cargaron todas las observacines de ISANTAFE23
+se cargaron todas las observacines de ISANTAFE60
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+d067936f17814b7ca7936f1781cb7c1b
+se cargaron todas las observacines de ISANTAFE105
+se cargaron todas las observacines de ISARGE5
+se cargaron todas las observacines de ITORTU3
+se cargaron todas las observacines de IUNIND8
+se cargaron todas las observacines de IUNINDEP8
+se cargaron todas las observacines de IVENAD3
+se cargaron todas las observacines de IVILLA133
+se cargaron todas las observacines de IVILLA1083
+se cargaron todas las observacines de IPREZ1
+se cargaron todas las observacines de ICASER41
+se cargaron todas las observacines de ICASER32
+Finalizó la ejecucución del programa.
+Total de llamadas:7441
+109 min
