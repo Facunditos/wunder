@@ -65,12 +65,14 @@ join estaciones est
 on obs.id_estacion = est.id_estacion
 group by est.stationID 
 
-select *
+select month(obs.obsTimeLocal),day(obs.obsTimeLocal),min(obs.tempAvg_grados_C)
 from observaciones obs 
-join estaciones est
-on obs.id_estacion = est.id_estacion
-where est.id_estacion = 3
-order by obs.obsTimeLocal desc
+where obs.id_estacion = 1 and year(obs.obsTimeLocal)=2024
+group by year(obs.obsTimeLocal),month(obs.obsTimeLocal),day(obs.obsTimeLocal)
+
+
+
+
 
 
 select *
@@ -105,6 +107,12 @@ insert into estaciones values
 
 select *
 from estaciones e ;
+
+
+alter table estaciones 
+add ult_reporte datetime default null;
+
+
 
 select *
 from estaciones
