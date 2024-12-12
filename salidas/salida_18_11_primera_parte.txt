@@ -1,0 +1,15 @@
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+c3d65ddc44b24823965ddc44b23823ee
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+62e7c150343d424ca7c150343d124cae
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+15545ac878c04bb6945ac878c05bb661
+cambio de api key por llamada 1400. Vieja api key
+7cf0af66837140e0b0af66837170e06d
+indice coordenada consultada: 21600

@@ -1,0 +1,98 @@
+indice coordenada consultada: 21600
+cambio de api key por llamada 1400. Vieja api key
+f1c4925553064ce88492555306bce894
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+85be574d475f42c9be574d475fe2c96f
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+f9e22b9f205940b0a22b9f2059f0b08e
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+c4f34cc2d5614cb8b34cc2d5619cb8b8
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+7941ba529c494b6b81ba529c49eb6be8
+cambio de api key por llamada 1400. Vieja api key
+b4a799b931de4d22a799b931decd22bc
+indice coordenada consultada: 25200
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+83e8cf8ec7f946e5a8cf8ec7f986e57f
+Hubo un problema con la conexión al servidor.
+Error número:1.
+Error:HTTPSConnectionPool(host='api.weather.com', port=443): Max retries exceeded with url: /v3/location/near?geocode=-33.69,-62.24&product=pws&format=json&apiKey=6c3a55e09a734cd5ba55e09a738cd5be (Caused by SSLError(SSLError(1, '[SSL: DECRYPTION_FAILED_OR_BAD_RECORD_MAC] decryption failed or bad record mac (_ssl.c:1006)')))
+Se aguarda 1 minuto
+cambio de api key por llamada 1400. Vieja api key
+6c3a55e09a734cd5ba55e09a738cd5be
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+dc6720a8ccb943fba720a8ccb9d3fb3c
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+0975eb5caf454ddcb5eb5caf450ddcdb
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+0a99025a2c0b45b499025a2c0bf5b450
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+8b96fa70f7a34cda96fa70f7a30cda23
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+3bc2b8bf746b4acd82b8bf746b0acdf6
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+4b164c48041b46e6964c48041b46e620
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+def91e8e2a654592b91e8e2a65b592c7
+indice coordenada consultada: 28800
+cambio de api key por llamada 1400. Vieja api key
+cfd211d210b440b39211d210b480b38a
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+379d0c6053b6481e9d0c6053b6581e03
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+d956a8d03e9b44c996a8d03e9bf4c905
+indice coordenada consultada: 32400
+cambio de api key por llamada 1400. Vieja api key
+5d6822782d0d42e3a822782d0dd2e31e
+cambio de api key por llamada 1400. Vieja api key
+6d89c6d3177e4c9789c6d3177ebc976a
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+059e474d5d0146979e474d5d01d6971e
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+e682abfc5de04b0682abfc5de00b0663
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+4970727a7a6f4573b0727a7a6ff5731b
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+762eede91d0e46a6aeede91d0e56a691
+indice coordenada consultada: 36000
+cambio de api key por llamada 1400. Vieja api key
+8d4e83f11e714b088e83f11e71cb08bb
+Finalizó la ejecucución del programa.
+Total de llamadas:15006
+Tiempo: 260 minutos

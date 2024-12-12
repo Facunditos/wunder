@@ -1,0 +1,112 @@
+cambio de api key por llamada 1400. Vieja api key
+dbefaf30eeea4d07afaf30eeeafd0780
+indice coordenada consultada: 61200
+cambio de api key por llamada 1400. Vieja api key
+30af8aa104444502af8aa10444a5025f
+cambio de api key por llamada 1400. Vieja api key
+bd5a1b96fe0b445a9a1b96fe0b145a23
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+a9d35137a0f84e6d935137a0f82e6d78
+indice coordenada consultada: 64800
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+304f6ba05c8440f78f6ba05c84f0f7be
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+d764b38354644a2aa4b38354647a2a4f
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+1c1cd168594241119cd168594291118e
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+2cb1695b40754f3eb1695b40758f3ef2
+cambio de api key por llamada 1400. Vieja api key
+3203acd5ebb8406b83acd5ebb8906b50
+cambio de api key por llamada 1400. Vieja api key
+b7e60cc3d84341c2a60cc3d84371c28e
+indice coordenada consultada: 68400
+cambio de api key por llamada 1400. Vieja api key
+fcde88f9edc540f39e88f9edc550f3a0
+cambio de api key por llamada 1400. Vieja api key
+da1aee4b07a34ce29aee4b07a37ce260
+cambio de api key por llamada 1400. Vieja api key
+deddfeb6a47b4a2e9dfeb6a47bba2ea7
+indice coordenada consultada: 72000
+cambio de api key por llamada 1400. Vieja api key
+1cb10ff8a2984d41b10ff8a298ad41a4
+cambio de api key por llamada 1400. Vieja api key
+30de35e67d0046c49e35e67d0086c4c3
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+97a57cb982b744bba57cb982b7c4bb41
+indice coordenada consultada: 75600
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+ca7786560900486eb786560900e86ee1
+cambio de api key por llamada 1400. Vieja api key
+3dc553ad8ccd4b9c8553ad8ccd0b9ce3
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+618f94db911b434b8f94db911b234bf8
+indice coordenada consultada: 79200
+cambio de api key por llamada 1400. Vieja api key
+c7c4c817965f450584c817965fa505fa
+Hubo un problema con la conexión al servidor.
+Error número:1.
+Error:('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+Se aguarda 1 minuto
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+159a4b4c6f7345019a4b4c6f73e5019c
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+bdac5bba55f94a17ac5bba55f92a17c3
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+28b1f5237a7e4b09b1f5237a7e9b0908
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+08f933708a5642d7b933708a5622d7e4
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+b58742d750df4d248742d750df6d2462
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+b6aadc3b194845ccaadc3b194805ccbc
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+8238d3862bff46b2b8d3862bff16b274
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+dd0c742fb0c549ca8c742fb0c559caaf
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+0feaad7e1c1e472faaad7e1c1e772f65
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+92d501b16f82459a9501b16f82059af3
+indice coordenada consultada: 80035
+se consumieron todas las api keys disponibles.
+Último llamado:https://api.weather.com/v3/location/near?geocode=-32.45,-60.14&product=pws&format=json&apiKey=159a4b4c6f7345019a4b4c6f73e5019c.
+Finalizó la ejecucución del programa.
+Total de llamadas:21141
+Tiempo: 373 minutos

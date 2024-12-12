@@ -11,17 +11,26 @@ CREATE DATABASE estaciones_wunder
 use estaciones_wunder
 
 
---observaciones
+-------------------------------------------------      observaciones         --------------------------------------------------
 
 drop table observaciones;
 delete from observaciones;
 insert into observaciones values
 	(1,'2024-07-01 00:04:00',457800.78,0,0);
 
-select max(obsTimeLocal)
+
+-- lluvia acumulada por día 
+select date(obsTimeLocal) , max(precipTotal_mm) 
 from observaciones obs
-where id_estacion =7 and obs.dia_con_obs =1 
-order by obsTimeLocal  desc
+where id_estacion =7 
+group by date(obsTimeLocal)
+
+
+select *
+from observaciones obs
+where id_estacion =7 and DATE(obsTimeLocal) = '2023-12-01'
+where (precipTotal_mm is null) and (dia_con_obs =1)
+
 
 select SUM(precipTotal_mm)
 from observaciones o 
@@ -50,13 +59,26 @@ where dia_con_obs =0
 group by obsTimeLocal 
 
 
-select est.stationID,est.id_estacion  ,max(obs.obsTimeLocal)
+select est.stationID,min(obs.obsTimeLocal),max(obs.obsTimeLocal),est.id_estacion 
 from observaciones obs 
 join estaciones est
 on obs.id_estacion = est.id_estacion
-where obs.dia_con_obs=1
 group by est.stationID 
-order by est.id_estacion 
+
+select *
+from observaciones obs 
+join estaciones est
+on obs.id_estacion = est.id_estacion
+where est.id_estacion = 3
+order by obs.obsTimeLocal desc
+
+
+select *
+from observaciones obs 
+join estaciones est
+on obs.id_estacion = est.id_estacion
+where (stationID like '%35%') and (obs.obsTimeLocal between '2024-03-02' and '2024-03-03')
+
 
 select distinct o.id_estacion , sum() o.dia_completo 
 from observaciones o 
@@ -74,7 +96,7 @@ values (17,'2024-10-12 00:04:49',0.5,1,1);
 select datalength(id_observacion) as bytes_id_observacion,datalength(id_estacion) as bytes_id_estacion,datalength(obsTimeLocal) as bytes_obsTimeLocal,datalength(precipTotal) as bytes_precipTotal,datalength(dia_con_obs) as bytes_dia_con_obs,datalength(dia_completo) as bytes_dia_completo
 from observaciones;
 
---estaciones
+-------------------------------------------------      estaciones       --------------------------------------------------
 
 drop table estaciones;
 delete from estaciones;
