@@ -4,6 +4,8 @@ beautifulsoup4==4.12.3
 seaborn==0.13.2
 matplotlib==3.9.1.post1
 SQLAlchemy==2.0.35
-mysql-connector-python==9.1.0
+#mysql-connector-python==9.1.0
 pyodbc==5.1.0
 geopandas==1.0.1
+psycopg2==2.9.10
+geoalchemy2=0.16.0

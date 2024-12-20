@@ -11,6 +11,16 @@ CREATE DATABASE estaciones_wunder
 use estaciones_wunder
 
 
+CREATE TABLE `ptos` (
+  `punto` geometry NOT NULL,
+  SPATIAL KEY `punto` (`punto`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+INSERT INTO ptos  VALUES (POINT (1,2) );
+INSERT INTO ptos VALUES (ST_PointFromText(`POINT(-6.64227 40.96303)`, 4326));
+INSERT INTO ptos VALUES (ST_PointFromText(`POINT(-6.66115 40.95858)`, 4326));
+INSERT INTO ptos VALUES (ST_PointFromText(`POINT(-6.68685 40.93992)`, 4326));
+
 -------------------------------------------------      observaciones         --------------------------------------------------
 
 drop table observaciones;
@@ -22,14 +32,15 @@ insert into observaciones values
 -- lluvia acumulada por día 
 select date(obsTimeLocal) , max(precipTotal_mm) 
 from observaciones obs
-where id_estacion =7 
 group by date(obsTimeLocal)
 
 
-select *
+select obs.id_estacion,lat,lon,max(precipTotal_mm )
 from observaciones obs
-where id_estacion =7 and DATE(obsTimeLocal) = '2023-12-01'
-where (precipTotal_mm is null) and (dia_con_obs =1)
+join estaciones e 
+on obs.id_estacion = e.id_estacion 
+where DATE(obsTimeLocal) = '2024-11-27'
+group by obs.id_estacion,lat,lon
 
 
 select SUM(precipTotal_mm)
@@ -46,12 +57,12 @@ where (id_estacion =17)
 
 
 
-select est.stationID,obs.obsTimeLocal , obs.precipTotal ,obs.dia_con_obs 
+select est.stationID,min(obs.tempAvg_grados_C)
 from observaciones obs
 join estaciones est
 on obs.id_estacion = est.id_estacion
-#where (obs.id_estacion  = 4)
-order by obs.obsTimeLocal DESC;
+where est.comentario like '%2%'
+group by est.stationID ;
 
 select obsTimeLocal ,count(*) 
 from observaciones o 
@@ -65,10 +76,19 @@ join estaciones est
 on obs.id_estacion = est.id_estacion
 group by est.stationID 
 
-select month(obs.obsTimeLocal),day(obs.obsTimeLocal),min(obs.tempAvg_grados_C)
+select year(obs.obsTimeLocal),month(obs.obsTimeLocal),day(obs.obsTimeLocal),min(obs.tempAvg_grados_C)
 from observaciones obs 
-where obs.id_estacion = 1 and year(obs.obsTimeLocal)=2024
 group by year(obs.obsTimeLocal),month(obs.obsTimeLocal),day(obs.obsTimeLocal)
+
+
+select id_estacion,max(obsTimeLocal) , min(obs.tempAvg_grados_C)
+from observaciones obs 
+where year(obs.obsTimeLocal) = 2024 and month(obs.obsTimeLocal) =11
+group by obs.id_estacion 
+
+select *
+from observaciones obs 
+where id_estacion =1 and  year(obs.obsTimeLocal) = 2024 
 
 
 
@@ -106,8 +126,16 @@ insert into estaciones values
 	('IPREZ1',-32.997496,-60.768009);
 
 select *
-from estaciones e ;
+from estaciones e where id_estacion  >=144;
 
+-- DELETE FROM estaciones  WHERE statio;
+
+update estaciones 
+set comentario = 'lote 1 - sin observaciones'
+where id_estacion in (17,54,92,107)
+
+delete 
+from estaciones where id_estacion >= 144;
 
 alter table estaciones 
 add ult_reporte datetime default null;
