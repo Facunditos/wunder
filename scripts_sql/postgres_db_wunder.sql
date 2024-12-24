@@ -33,3 +33,43 @@ having ;
 select *
 from reportes r 
 where r.fecha =  '2024-01-09' and id_estacion =120;
+
+select fecha,max("precipTotal_mm"),dia_con_obs 
+from reportes r 
+where id_estacion=42
+group by fecha,dia_con_obs 
+order by fecha ;
+
+
+select fecha,max("precipTotal_mm")
+from reportes r 
+where fecha >= '2024-01-01' and  ("precipTotal_mm" <> 'NaN')
+group by "fecha" 
+
+select id_estacion ,fecha,max("precipTotal_mm")
+from reportes r 
+where fecha >= '2024-09-12'
+group by id_estacion ,fecha 
+
+select *
+from reportes r 
+where id_estacion =3 and fecha >= '2024-09-09' 
+
+
+update reportes 
+set "precipRate_mm_h"  = null 
+where "precipRate_mm_h"  = 'NaN';
+update reportes 
+set "pressureMin_hPa"  = null 
+where "pressureMin_hPa"  = 'NaN';
+update reportes 
+set "pressureTrend_hPa"  = null 
+where "pressureTrend_hPa"  = 'NaN';
+
+select *
+from estaciones e 
+alter table estaciones 
+drop column ultimo_reporte;
+
+alter table reportes 
+rename column "precipRate_mm" to "precipRate_mm_h";
