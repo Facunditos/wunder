@@ -1,0 +1,139 @@
+Se obtuvo una respuesta desconocida.
+Respuesta:404.
+Llamado:https://api.weather.com/v3/location/near?geocode=-33.1,-64.45&product=pws&format=json&apiKey=f312a2377f054e8192a2377f053e8120
+Se obtuvo una respuesta desconocida.
+Respuesta:404.
+Llamado:https://api.weather.com/v3/location/near?geocode=-33.1,-64.4&product=pws&format=json&apiKey=f312a2377f054e8192a2377f053e8120
+Hubo un problema con la conexión al servidor.
+Error número:1.
+Error:('Connection aborted.', ConnectionResetError(10054, 'Se ha forzado la 
+interrupción de una conexión existente por el host remoto', None, 10054, None))
+Se aguarda 1 minuto
+Hubo un problema con la conexión al servidor.
+Error número:2.
+Error:('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+Se aguarda 1 minuto
+cambio de api key por llamada 1400. Vieja api key
+f312a2377f054e8192a2377f053e8120
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+3772c7718e724fa1b2c7718e72ffa192
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+ee5c837b00674ce19c837b00672ce188
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+390f15c9326a47ef8f15c9326a37efbf
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+521924c8a26d4bc49924c8a26ddbc4d2
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+b191e43dd7be4e1291e43dd7be9e1270
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+ffe851ca830a4119a851ca830a81191d
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+c7916775bc5d4d0a916775bc5ddd0a65
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+3227faee672c4d7ca7faee672cbd7cbc
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+5d901a0781a04a58901a0781a0aa589c
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+caaba17c3da84b4aaba17c3da81b4ac5
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+09767d57be644cacb67d57be64acac27
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+29ff68ece46b4497bf68ece46b44978a
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+de17385b3fe54df397385b3fe57df36e
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+d96fd86cc2cc4db5afd86cc2cccdb515
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+7fd6cb6d86974c8d96cb6d86977c8d48
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+73ee63a1960d4710ae63a1960d371081
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+2d1e63d061bb49889e63d061bb298842
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+18f1073babc44449b1073babc4a449be
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+7fe0747290424f91a074729042ef9161
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+400602926eb845738602926eb8457398
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+e5659d7c49604f37a59d7c4960cf3701
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+3bab39ac20874d5bab39ac20874d5bb5
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+c2cce2c1b24c4e2b8ce2c1b24c4e2b1d
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+5d54729a53d24c0594729a53d22c05e0
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+9ba0aaf623fc43dfa0aaf623fc53dffe
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+3d80ef4863b6460980ef4863b6160932
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+f8ec49377cc74c9fac49377cc7ec9f95
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+2e704b4d722c4b18b04b4d722c2b18f2
+cambio de api key por problmeas de autorización.
+Respuesta:401.
+Vieja api key
+f374c6cb74844c9bb4c6cb7484ec9bd8
+indice coordenada consultada: 1798
+se consumieron todas las api keys disponibles.
+Último llamado:https://api.weather.com/v3/location/near?geocode=-31.9,-63.7&product=pws&format=json&apiKey=390f15c9326a47ef8f15c9326a37efbf.
+Finalizó la ejecucución del programa.
+Total de llamadas:1827
+[]

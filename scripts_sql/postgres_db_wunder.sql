@@ -30,6 +30,23 @@ group by "stationID" ,"geom"
 having ;   
 
 
+select id_estacion ,max(fecha),max("obsTimeLocal")
+from reportes r 
+group by id_estacion 
+where 
+
+select fecha,dia_con_obs 
+from reportes r
+where id_estacion =2 and fecha >= '2024-09-01'
+group by fecha,dia_con_obs 
+order by max("obsTimeLocal")  desc
+
+select *
+from reportes r
+where id_estacion =1 and fecha >= '2024-09-01'
+order by fecha 
+
+
 select *
 from reportes r 
 where r.fecha =  '2024-01-09' and id_estacion =120;

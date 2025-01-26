@@ -126,7 +126,8 @@ insert into estaciones values
 	('IPREZ1',-32.997496,-60.768009);
 
 select *
-from estaciones e where id_estacion  >=144;
+from estaciones e 
+order by stationID 
 
 -- DELETE FROM estaciones  WHERE statio;
 

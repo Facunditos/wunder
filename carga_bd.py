@@ -7,9 +7,12 @@ from datetime import date,timedelta,datetime
 from funciones_grales import imprimir_mensaje,cambiar_api_key,obtener_api_keys
 import requests # type: ignore
 import time
+import csv
 
 def eliminar_reportes(session:sqlalchemy.orm.session.Session):
-    ultima_fecha = '2024-09-11'
+    with open('./ultima_fecha_carga_BD.txt','r') as csv:
+        lines = csv.read()
+        ultima_fecha = lines.rstrip('\n')
     stmt = delete(Reporte).where(Reporte.fecha==ultima_fecha)
     session.execute(stmt)
     ultima_fecha_lista = ultima_fecha.split('-')
@@ -132,8 +135,12 @@ def completar_reportes(fecha_hasta:str=datetime.now().date())->None:
                 imprimir_mensaje(situacion='cambio estacion',identificador_estacion=estacion_id)
         # Guarda todas las reportes extraídas, aún cuando el script no haya realizado todas las consultas que correspondían
         imprimir_mensaje(situacion='fin ejecución',llamadas_totales=numero_llamada_global)
-        if api_key!='': session.commit()     
+        if api_key!='': 
+            session.commit()     
+            with open('./ultima_fecha_carga_BD.txt','w',newline='') as csv_file:
+                writer = csv.writer(csv_file)
+                writer.writerow([fecha_hasta])
 
 
-fecha_limite = date(2024,9,12)
+fecha_limite = date(2024,12,31)
 completar_reportes(fecha_hasta=fecha_limite)

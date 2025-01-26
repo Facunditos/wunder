@@ -1,6 +1,7 @@
 from datetime import date
 import pandas as pd
 import random
+import csv
 
 def imprimir_mensaje(situacion:str,vieja_api_key:str=None,url:str=None,llamadas_totales:int=None,
     identificador_estacion:str=None,dia:date=None,status_code:int=None,n_error_con:int=None,problema=None)->None:
@@ -41,3 +42,10 @@ def obtener_api_keys()->list:
     api_keys_des = api_keys.copy()
     random.shuffle(api_keys_des)
     return api_keys_des  
+
+def escribirCSV(ruta:str,datos:list,header:list|tuple=None)->None:
+    #Se elige el modo escritura(w) por lo que se sobreescribe el archivo
+    with open(ruta,'w',newline='') as csv_file:
+            writer = csv.writer(csv_file)
+            if header : writer.writerow(header)
+            writer.writerows(datos)
