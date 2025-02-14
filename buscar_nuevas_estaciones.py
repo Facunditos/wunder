@@ -92,9 +92,6 @@ def buscar_estaciones_rectangulo():
     imprimir_mensaje(situacion='fin ejecución',llamadas_totales=numero_llamada_global)
     if api_key!='':
         print(coordenadas_sin_consultar)
-        fecha = str(datetime.now().date()).replace('-','_')
-        encabezado = ('stationId','lat','lon')
-        escribirCSV(ruta=f'./busqueda_estaciones/estaciones_encontradas_rectangulo_{fecha}.csv',datos=estaciones,header=encabezado)
         print(f'se encontraron {len(estaciones)} estaciones en el rectángulo')
         return estaciones
     else:
@@ -200,7 +197,7 @@ def insertar_estaciones_activas(estaciones):
             )
             session.add(obj_estacion)
         session.commit()
-        print('se agregagaros todas las estaciones activas a la bae de datos')
+        print('se agregagaros todas las estaciones activas a la base de datos')
 
 def clasificar_estaciones():
     estaciones_clasificacion = []
@@ -208,14 +205,14 @@ def clasificar_estaciones():
     [estaciones_clasificacion.append(estacion+('inactiva',)) for estacion in estaciones_nuevas if estacion not in estaciones_activas]
     [estaciones_clasificacion.append(estacion+('bd',)) for estacion in estaciones_poligono_irregular if estacion not in estaciones_nuevas]
     [estaciones_clasificacion.append(estacion+('afuera',)) for estacion in estaciones_rectangulo if estacion not in estaciones_poligono_irregular]
-    fecha = str(datetime.now().date()).replace('-','_')
+    fecha = str(date.today()).replace('-','_')
     encabezado = ('stationId','lat','lon','categoria')
     escribirCSV(ruta=f'./busqueda_estaciones/estaciones_encontradas_clasificacion_{fecha}.csv',datos=estaciones_clasificacion,header=encabezado)
 
-#estaciones_rectangulo = buscar_estaciones_rectangulo()
-# estaciones_poligono_irregular = buscar_estaciones_poligono_irregular(estaciones_rectangulo)
-# estaciones_nuevas = buscar_estaciones_nuevas(estaciones_poligono_irregular)
-# estaciones_activas = buscar_estaciones_activas(estaciones_nuevas)
+estaciones_rectangulo = buscar_estaciones_rectangulo()
+estaciones_poligono_irregular = buscar_estaciones_poligono_irregular(estaciones_rectangulo)
+estaciones_nuevas = buscar_estaciones_nuevas(estaciones_poligono_irregular)
+estaciones_activas = buscar_estaciones_activas(estaciones_nuevas)
 #insertar_estaciones_activas(estaciones_activas)
 clasificar_estaciones()
 

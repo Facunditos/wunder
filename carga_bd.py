@@ -9,6 +9,11 @@ import requests # type: ignore
 import time
 import csv
 
+
+    
+
+
+
 def eliminar_reportes(session:sqlalchemy.orm.session.Session):
     with open('./ultima_fecha_carga_BD.txt','r') as csv:
         lines = csv.read()
@@ -62,7 +67,7 @@ def cargar_reportes(estacion:Estacion,reportes:list,dia:date,session:sqlalchemy.
                 
 
 
-def completar_reportes(fecha_hasta:str=datetime.now().date())->None:
+def completar_reportes()->None:
     engine = create_engine('postgresql+psycopg2://postgres:facundo@localhost/wunder')
     engine.connect()
     claves_api = obtener_api_keys()
@@ -74,8 +79,15 @@ def completar_reportes(fecha_hasta:str=datetime.now().date())->None:
     recurso=''
     with Session(engine) as session:
         fecha_desde = eliminar_reportes(session=session)    
-        fecha_actual = datetime.now().date()
+        fecha_actual = date.today()
+        dif_dias = (fecha_actual - fecha_desde).days
+        if dif_dias <= 14:
+            fecha_hasta = fecha_actual
+        else:
+            fecha_hasta = fecha_desde + timedelta(days=14)
+
         estaciones = session.query(Estacion).all()
+        inicio = time.time()
         for estacion_obj in estaciones:
             fecha = fecha_desde
             estacion_id=estacion_obj.stationID
@@ -134,7 +146,16 @@ def completar_reportes(fecha_hasta:str=datetime.now().date())->None:
             else:
                 imprimir_mensaje(situacion='cambio estacion',identificador_estacion=estacion_id)
         # Guarda todas las reportes extraídas, aún cuando el script no haya realizado todas las consultas que correspondían
+        # pasar a la función imprimit_mensaje
+        fin = time.time()
+        tiempo_s = fin - inicio
+        tiempo_m = int(tiempo_s // 60)
+        tiempo_h = int(tiempo_m // 60)
+        minutos_restantes = tiempo_m % 60
+        tiempo_llamada_API_s = round(numero_llamada_global / tiempo_s,2)
         imprimir_mensaje(situacion='fin ejecución',llamadas_totales=numero_llamada_global)
+        print(f'Cada llamada a la API consumió, en promedio, {tiempo_llamada_API_s} segundos')
+        print(f'El tiempo consumido en la descarga de los reportes fue de {tiempo_h} hs y {minutos_restantes} minutos')
         if api_key!='': 
             session.commit()     
             with open('./ultima_fecha_carga_BD.txt','w',newline='') as csv_file:
@@ -142,5 +163,4 @@ def completar_reportes(fecha_hasta:str=datetime.now().date())->None:
                 writer.writerow([fecha_hasta])
 
 
-fecha_limite = date(2024,12,31)
-completar_reportes(fecha_hasta=fecha_limite)
+completar_reportes()

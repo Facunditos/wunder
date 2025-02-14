@@ -21,19 +21,36 @@ add constraint estacones_ubicacion_point_chk
     check(st_geometrytype(ubicacion) = 'ST_Point'::text);
    
 
-select "stationID" ,"geom",max("obsTimeLocal") as hora ,max("precipTotal_mm") as lluvia_acum
-from estaciones as e
-join reportes as r
-on e.id_estacion = r.id_estacion
-where "obsTimeLocal" between '2024-11-28' and '2024-11-29'
-group by "stationID" ,"geom"
-having ;   
-
-
-select id_estacion ,max(fecha),max("obsTimeLocal")
+select id_estacion  ,max("obsTimeLocal") as hora ,max("precipTotal_mm") as lluvia_acum
 from reportes r 
+where fecha ='2025-01-19'
 group by id_estacion 
-where 
+having max("obsTimeLocal") ;   
+
+select id_estacion 
+from reportes r 
+where fecha = '2024-12-31'and id_estacion>139 and dia_con_obs=false 
+group by id_estacion,fecha ,dia_con_obs 
+intersect 
+select id_estacion 
+from reportes r 
+where fecha = '2025-01-01'and id_estacion>139 and dia_con_obs=false 
+group by id_estacion,fecha ,dia_con_obs 
+
+/*
+delete 
+from reportes 
+where id_estacion >139 and fecha = '2024-12-31'
+*/
+
+select *
+from estaciones e 
+order by id_estacion 
+select *
+from reportes r 
+where id_estacion =140
+order by fecha desc 
+-- id_estacion > 139
 
 select fecha,dia_con_obs 
 from reportes r
@@ -41,11 +58,25 @@ where id_estacion =2 and fecha >= '2024-09-01'
 group by fecha,dia_con_obs 
 order by max("obsTimeLocal")  desc
 
+-- verificación la actividad de las estaciones en el último tiempo
+select id_estacion ,count(*) as q_dias_sin_reportes
+from reportes r
+where id_estacion > 140 and dia_con_obs=false
+group by id_estacion 
+order by q_dias_sin_reportes desc
+
+
+DECLARE myvar integer;
+
+select q_dias_sin_reporte := count(*)
+from reportes r
+where id_estacion = 274 and dia_con_obs=false
+
+-----------------------------------------
+
 select *
 from reportes r
-where id_estacion =1 and fecha >= '2024-09-01'
-order by fecha 
-
+where id_estacion = 274
 
 select *
 from reportes r 
@@ -70,7 +101,7 @@ group by id_estacion ,fecha
 
 select *
 from reportes r 
-where id_estacion =3 and fecha >= '2024-09-09' 
+where id_estacion =293 and fecha >= '2025-02-13' 
 
 
 update reportes 
@@ -83,10 +114,19 @@ update reportes
 set "pressureTrend_hPa"  = null 
 where "pressureTrend_hPa"  = 'NaN';
 
-select *
-from estaciones e 
+select inicio,count(*)
+from estaciones e
+where inicio > '2024-12-30'
+group by inicio 
+order by inicio 
+
 alter table estaciones 
 drop column ultimo_reporte;
+
+/*
+update estaciones set inicio ='2025-01-01'
+where inicio = '2025-01-26';
+*/
 
 alter table reportes 
 rename column "precipRate_mm" to "precipRate_mm_h";
