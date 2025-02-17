@@ -156,6 +156,7 @@ def completar_reportes()->None:
         imprimir_mensaje(situacion='fin ejecución',llamadas_totales=numero_llamada_global)
         print(f'Cada llamada a la API consumió, en promedio, {tiempo_llamada_API_s} segundos')
         print(f'El tiempo consumido en la descarga de los reportes fue de {tiempo_h} hs y {minutos_restantes} minutos')
+        print(f'Última fecha cargada en la base de datos: {fecha_hasta}')
         if api_key!='': 
             session.commit()     
             with open('./ultima_fecha_carga_BD.txt','w',newline='') as csv_file:

@@ -213,6 +213,6 @@ estaciones_rectangulo = buscar_estaciones_rectangulo()
 estaciones_poligono_irregular = buscar_estaciones_poligono_irregular(estaciones_rectangulo)
 estaciones_nuevas = buscar_estaciones_nuevas(estaciones_poligono_irregular)
 estaciones_activas = buscar_estaciones_activas(estaciones_nuevas)
-#insertar_estaciones_activas(estaciones_activas)
+insertar_estaciones_activas(estaciones_activas)
 clasificar_estaciones()
 

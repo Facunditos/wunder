@@ -101,7 +101,7 @@ group by id_estacion ,fecha
 
 select *
 from reportes r 
-where id_estacion =293 and fecha >= '2025-02-13' 
+where id_estacion =121 and fecha >= '2025-02-13' 
 
 
 update reportes 
@@ -119,6 +119,10 @@ from estaciones e
 where inicio > '2024-12-30'
 group by inicio 
 order by inicio 
+
+select "stationID" 
+from estaciones e
+where inicio = '2025-02-14'
 
 alter table estaciones 
 drop column ultimo_reporte;
