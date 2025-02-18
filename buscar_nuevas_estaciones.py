@@ -12,8 +12,8 @@ import pandas as pd
 import geopandas as gpd
 from shapely.geometry import Point
 
-engine = create_engine('postgresql+psycopg2://postgres:facundo@localhost/wunder')
-engine.connect()
+# engine = create_engine('postgresql+psycopg2://postgres:facundo@localhost/wunder')
+# engine.connect()
 
 def buscar_estaciones_rectangulo():
     #Seteo de variables

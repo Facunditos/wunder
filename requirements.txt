@@ -8,4 +8,4 @@ SQLAlchemy==2.0.35
 pyodbc==5.1.0
 geopandas==1.0.1
 psycopg2==2.9.10
-geoalchemy2=0.16.0
+geoalchemy2==0.16.0
