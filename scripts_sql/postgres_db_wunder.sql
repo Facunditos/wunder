@@ -27,9 +27,21 @@ where fecha ='2025-01-19'
 group by id_estacion 
 having max("obsTimeLocal") ;   
 
-select id_estacion 
+
+
+
+select count(*)
+from estaciones e ;
+
+select id_estacion,count(*) as n_reportes_dato_lluvia_nulo
 from reportes r 
-where fecha = '2024-12-31'and id_estacion>139 and dia_con_obs=false 
+where "precipTotal_mm" is null and dia_con_obs is true 
+group by id_estacion ;
+
+select *
+from reportes r 
+where r."precipTotal_mm" ;
+
 group by id_estacion,fecha ,dia_con_obs 
 intersect 
 select id_estacion 
@@ -74,7 +86,7 @@ where id_estacion = 274 and dia_con_obs=false
 
 -----------------------------------------
 
-select *
+select max(fecha)
 from reportes r
 where id_estacion = 274
 
@@ -118,7 +130,11 @@ select inicio,count(*)
 from estaciones e
 where inicio > '2024-12-30'
 group by inicio 
-order by inicio 
+order by inicio
+union
+select 'antes 2024-12-30' as inicio,count(*)
+from estaciones e
+where inicio < '2024-12-30' ;
 
 select "stationID" 
 from estaciones e
