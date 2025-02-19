@@ -70,12 +70,13 @@ def cargar_reportes(estacion:Estacion,reportes:list,dia:date,session:sqlalchemy.
 def completar_reportes()->None:
     engine = create_engine('postgresql+psycopg2://postgres:facundo@localhost/wunder')
     engine.connect()
+    #Seteo de variables
     claves_api = obtener_api_keys()
+    api_key=claves_api[0]
     numero_llamada_global=0
     numero_llamada_api_key=0
-    #Seteo de variables
-    api_key=claves_api[0]
     numero_error_conexion=0
+    numero_api_keys_inhabilitadas = 0
     recurso=''
     with Session(engine) as session:
         fecha_desde = eliminar_reportes(session=session)    
@@ -98,7 +99,8 @@ def completar_reportes()->None:
                         api_key=cambiar_api_key(conjunto_api_key=claves_api,api_key_actual=api_key)
                         #Si se agotaron las api keys se rompe el bucle white
                         if (api_key==''):
-                            break
+                            imprimir_mensaje(situacion='sin api keys',url=recurso)
+                            return 
                         numero_llamada_api_key=0
                 fecha_str = "{:04d}".format(fecha.year) + "{:02d}".format(fecha.month) + "{:02d}".format(fecha.day)
                 if (fecha==fecha_actual):
@@ -121,10 +123,12 @@ def completar_reportes()->None:
                     elif (codigo_respusta==401):
                         # Status Code 401: Unauthorized. The request requires authentication.
                         imprimir_mensaje(situacion='api key desautorizada',status_code=codigo_respusta,vieja_api_key=api_key)
+                        numero_api_keys_inhabilitadas += 1
                         api_key=cambiar_api_key(conjunto_api_key=claves_api,api_key_actual=api_key)
                         #Si se agotaron las api keys se rompe el bucle white
                         if (api_key==''):
-                            break
+                            imprimir_mensaje(situacion='sin api keys',url=recurso)
+                            return 
                         numero_llamada_api_key=0
                     elif (codigo_respusta==500):
                         imprimir_mensaje(situacion='el servidor no contesta',status_code=codigo_respusta)
@@ -139,14 +143,10 @@ def completar_reportes()->None:
                     un_minuto=60
                     #Se pausa la ejecución para aguardar que normalicen el funcionamiento del servidor
                     time.sleep(un_minuto)
-            #Sale del while y corroborra que se pueda pasar a la siguiente estación
-            if (api_key==''):
-                imprimir_mensaje(situacion='sin api keys',url=recurso)
-                break
-            else:
-                imprimir_mensaje(situacion='cambio estacion',identificador_estacion=estacion_id)
-        # Guarda todas las reportes extraídas, aún cuando el script no haya realizado todas las consultas que correspondían
-        # pasar a la función imprimit_mensaje
+            
+            imprimir_mensaje(situacion='cambio estacion',identificador_estacion=estacion_id)
+
+        # Salida del bucle for: ya se cargaron todos los reportes
         fin = time.time()
         tiempo_s = fin - inicio
         tiempo_m = int(tiempo_s // 60)
@@ -157,11 +157,11 @@ def completar_reportes()->None:
         print(f'Cada llamada a la API consumió, en promedio, {tiempo_llamada_API_s} segundos')
         print(f'El tiempo consumido en la descarga de los reportes fue de {tiempo_h} hs y {minutos_restantes} minutos')
         print(f'Última fecha cargada en la base de datos: {fecha_hasta}')
-        if api_key!='': 
-            session.commit()     
-            with open('./ultima_fecha_carga_BD.txt','w',newline='') as csv_file:
-                writer = csv.writer(csv_file)
-                writer.writerow([fecha_hasta])
+        if numero_api_keys_inhabilitadas >= 20: print('Hay al menos 20 api keys que están inhabilitadas. Se aconseja renovar el lote completo de api keys')
+        session.commit()     
+        with open('./ultima_fecha_carga_BD.txt','w',newline='') as csv_file:
+            writer = csv.writer(csv_file)
+            writer.writerow([fecha_hasta])
 
 
 completar_reportes()
