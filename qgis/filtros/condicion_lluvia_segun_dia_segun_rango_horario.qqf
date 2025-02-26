@@ -1,0 +1,1 @@
+<Query>"obsTimeLocal" > '2025-02-05 10:00' AND "obsTimeLocal" &lt; '2025-02-05 11:00'</Query>

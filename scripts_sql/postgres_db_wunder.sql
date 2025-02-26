@@ -1,9 +1,106 @@
-create database wunder;
-drop database wunder;
+--create database wunder;
+--create EXTENSION postgis;
 
-CREATE EXTENSION postgis;
+---------- peso de la base de datos y de sus tablas ----------------------------
 
-drop table estaciones;
+select pg_size_pretty(
+	pg_database_size('wunder')
+) as peso_total;
+
+select
+  table_name,
+  pg_size_pretty(pg_total_relation_size(quote_ident(table_name))),
+  pg_total_relation_size(quote_ident(table_name))
+from information_schema.tables
+where table_schema = 'public'
+order by 3 desc;
+
+---------- Tabla estaciones ----------------------------
+
+select count(*) as cantidad_estaciones
+from estaciones e;
+
+select *
+from estaciones e
+order by e.inicio;
+
+select e.inicio,count(*) as cantidad_estaciones
+from estaciones e 
+where e.inicio >'2024-12-31'
+group by e.inicio
+order by e.inicio;
+
+---------- Tabla reportes ----------------------------
+
+select count(*) as cantidad_reportes
+from reportes e;
+
+select *
+from reportes r;
+
+select count(*)
+from reportes 
+where dia_con_obs is false
+
+select *
+from reportes 
+where dia_con_obs is false
+limit 20
+
+---------- Reportes contemplando todas las estaciones ----------------------------
+
+-- según día
+
+select e."stationID",e.geom,r."obsTimeLocal",r."precipTotal_mm" 
+from estaciones e 
+join reportes r 
+on e.id_estacion = r.id_estacion 
+where r.fecha ='2025-02-05';
+
+-- según día y horario
+
+select e."stationID",e.geom,r."obsTimeLocal",r."precipTotal_mm" 
+from estaciones e 
+join reportes r 
+on e.id_estacion = r.id_estacion 
+where "obsTimeLocal" between '2025-02-05 10:00' and '2025-02-05 15:00';
+
+
+
+---------- Reportes contemplando una única estación ----------------------------
+
+-- según rango de fechas (por semana o menes)
+
+select e."stationID",e.geom  ,r."obsTimeLocal",r."precipTotal_mm" 
+from estaciones e 
+join reportes r 
+on e.id_estacion = r.id_estacion 
+where (e."stationID"  like 'IROSAR100') and 
+	(r.fecha between '2025-01-01' and '2025-01-31');
+
+-- según día
+
+select e."stationID",e.geom  ,r."obsTimeLocal",r."precipTotal_mm" 
+from estaciones e 
+join reportes r 
+on e.id_estacion = r.id_estacion 
+where e."stationID"  like 'IROSAR100' and r.fecha ='2025-02-05';
+
+-- según día y horario
+
+select e."stationID",e.geom  ,r."obsTimeLocal",r."precipTotal_mm" 
+from estaciones e 
+join reportes r 
+on e.id_estacion = r.id_estacion 
+where (e."stationID"  like 'IROSAR100') and 
+	"obsTimeLocal" between '2025-02-05 10:00' and '2025-02-05 15:00';
+
+
+
+
+
+
+--drop table estaciones;
 CREATE TABLE estaciones (
   id_estacion int primary key,
   stationID varchar(20) NOT NULL,
@@ -14,7 +111,7 @@ CREATE TABLE estaciones (
   ult_reporte timestamp
 ) 
 
-drop table reportes;
+--drop table reportes;
 
 alter table estaciones
 add constraint estacones_ubicacion_point_chk
@@ -140,8 +237,7 @@ select "stationID"
 from estaciones e
 where inicio = '2025-02-14'
 
-alter table estaciones 
-drop column ultimo_reporte;
+
 
 /*
 update estaciones set inicio ='2025-01-01'
