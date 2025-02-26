@@ -65,7 +65,13 @@ join reportes r
 on e.id_estacion = r.id_estacion 
 where "obsTimeLocal" between '2025-02-05 10:00' and '2025-02-05 15:00';
 
+-- según rango días
 
+select e."stationID",e.geom,r."obsTimeLocal",r."precipTotal_mm" 
+from estaciones e 
+join reportes r 
+on e.id_estacion = r.id_estacion 
+where "fecha" between '2025-02-04' and '2025-02-05';
 
 ---------- Reportes contemplando una única estación ----------------------------
 
