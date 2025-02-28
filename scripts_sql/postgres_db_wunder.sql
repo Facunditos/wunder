@@ -101,10 +101,21 @@ on e.id_estacion = r.id_estacion
 where (e."stationID"  like 'IROSAR100') and 
 	"obsTimeLocal" between '2025-02-05 10:00' and '2025-02-05 15:00';
 
+---------- Mediana de la lluvia acumulada según día ----------------------------
+
+SELECT PERCENTILE_CONT(0.5) WITHIN GROUP(ORDER BY lluvia_acum_por_estacion)  
+from (select max("precipTotal_mm") as lluvia_acum_por_estacion
+from reportes r 
+where fecha ='2025-02-05'
+group by id_estacion); 
 
 
-
-
+select max("precipTotal_mm") as lluvia_acum_por_estacion
+from reportes r 
+where fecha ='2025-02-05'
+group by id_estacion
+having max("precipTotal_mm") is not null
+order by 1;
 
 --drop table estaciones;
 CREATE TABLE estaciones (
@@ -122,15 +133,6 @@ CREATE TABLE estaciones (
 alter table estaciones
 add constraint estacones_ubicacion_point_chk
     check(st_geometrytype(ubicacion) = 'ST_Point'::text);
-   
-
-select id_estacion  ,max("obsTimeLocal") as hora ,max("precipTotal_mm") as lluvia_acum
-from reportes r 
-where fecha ='2025-01-19'
-group by id_estacion 
-having max("obsTimeLocal") ;   
-
-
 
 
 select count(*)
