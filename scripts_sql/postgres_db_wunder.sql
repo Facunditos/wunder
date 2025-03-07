@@ -49,21 +49,33 @@ limit 20
 
 ---------- Reportes contemplando todas las estaciones ----------------------------
 
--- según día
+-- según rango días y región 
 
 select e."stationID",e.geom,r."obsTimeLocal",r."precipTotal_mm" 
 from estaciones e 
 join reportes r 
 on e.id_estacion = r.id_estacion 
-where r.fecha ='2025-02-05';
+where 
+	r.fecha between '2025-02-04' and '2025-02-06'  
+	and 
+	ST_Contains(
+	-- se define una región para encontrar las estaciones localizadas en Firmat	
+	ST_Polygon('LINESTRING(-61.37 -33.54, -61.58 -33.54, -61.58 -33.39, -61.37 -33.39, -61.37 -33.54)'::geometry, 4326),
+	e.geom
+	);
 
--- según día y horario
+-- histórico región 
 
 select e."stationID",e.geom,r."obsTimeLocal",r."precipTotal_mm" 
 from estaciones e 
 join reportes r 
 on e.id_estacion = r.id_estacion 
-where "obsTimeLocal" between '2025-02-05 10:00' and '2025-02-05 15:00';
+where 
+	ST_Contains(
+	-- se define una región para encontrar las estaciones localizadas en Firmat	
+	ST_Polygon('LINESTRING(-61.37 -33.54, -61.58 -33.54, -61.58 -33.39, -61.37 -33.39, -61.37 -33.54)'::geometry, 4326),
+	e.geom
+	);
 
 -- según rango días
 
@@ -73,16 +85,34 @@ join reportes r
 on e.id_estacion = r.id_estacion 
 where "fecha" between '2025-02-04' and '2025-02-05';
 
----------- Reportes contemplando una única estación ----------------------------
+-- según día y horario
 
--- según rango de fechas (por semana o menes)
-
-select e."stationID",e.geom  ,r."obsTimeLocal",r."precipTotal_mm" 
+select e."stationID",e.geom,r."obsTimeLocal",r."precipTotal_mm" 
 from estaciones e 
 join reportes r 
 on e.id_estacion = r.id_estacion 
-where (e."stationID"  like 'IROSAR100') and 
-	(r.fecha between '2025-02-18' and '2025-02-21');
+where "obsTimeLocal" between '2025-02-05 10:00' and '2025-02-05 15:00';
+
+---------- Reportes contemplando una única estación ----------------------------
+
+-- según rango días
+
+select e."stationID",e.geom,r."obsTimeLocal",r."precipTotal_mm" 
+from estaciones e 
+join reportes r 
+on e.id_estacion = r.id_estacion 
+where 
+	e."stationID"  like 'IROSAR100'
+	and
+	r.fecha between '2025-02-04' and '2025-02-06';
+
+-- histórico
+select e."stationID",e.geom,r."obsTimeLocal",r."precipTotal_mm" 
+from estaciones e 
+join reportes r 
+on e.id_estacion = r.id_estacion 
+where 
+	e."stationID"  like 'IROSAR100';
 
 -- según día
 

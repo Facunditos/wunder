@@ -1,13 +1,12 @@
-from modelos import Reporte,Estacion
+from modelos import Estacion
 from sqlalchemy.engine import * # type: ignore
 from sqlalchemy.orm import * # type: ignore
 from sqlalchemy import * # type: ignore
 import sqlalchemy
-from datetime import date,timedelta,datetime
+from datetime import date
 from funciones_grales import imprimir_mensaje,cambiar_api_key,obtener_api_keys,escribirCSV
 import requests # type: ignore
 import time
-import csv
 import pandas as pd
 import geopandas as gpd
 from shapely.geometry import Point
@@ -43,10 +42,10 @@ def buscar_estaciones_rectangulo()->list[tuple]:
             numero_llamada_api_key=0
         lat = coor.loc['lat']
         lon = coor.loc['lon']
-        # El endpoint devuelve las estaciones más cercanas a la coordenada pasada como query, por lo general es 10 el número de estaciones devueltas.
-        recurso=f'https://api.weather.com/v3/location/near?geocode={lat},{lon}&product=pws&format=json&apiKey={api_key}'
         # Se crea este bucle while para garantizar que se va a realizar la llamada sobre la coordenada que se está iterando
         while True:
+            # El endpoint devuelve las estaciones más cercanas a la coordenada pasada como query, por lo general es 10 el número de estaciones devueltas.
+            recurso=f'https://api.weather.com/v3/location/near?geocode={lat},{lon}&product=pws&format=json&apiKey={api_key}'
             try:
                 # Mandatoriamente se debe indicar un tiempo límite de espera para evitar que la llamada quede inconclusa por falta de respuesta de la API
                 respuesta = requests.get(recurso,timeout=60,headers={'Cache-Control': 'cache-control: max-age=599'})
@@ -104,6 +103,10 @@ def buscar_estaciones_rectangulo()->list[tuple]:
  
 
 def buscar_estaciones_poligono_irregular(estaciones:list[tuple])->list[tuple]:
+    """
+    Recibe las estaciones cercanas a las coordenadas del rectángulo y devuelve 
+    aquellas estaciones que estén dentro del polígo irregular de interés
+    """
     #Leer el archivo KMZ
     kmz_path = "./busqueda_estaciones/poligono_cuencas.kmz"
     poligono = gpd.read_file(f"/vsizip/{kmz_path}")
@@ -137,52 +140,66 @@ def buscar_estaciones_poligono_irregular(estaciones:list[tuple])->list[tuple]:
     return estaciones_filtradas
 
 def buscar_estaciones_nuevas(estaciones:list[tuple])->list[tuple]:
+    """
+    Recibe las estaciones que están ubicadas adentro del polígono irregular y de interés
+    y devuelve aquellas que aún no fueron agregadas a la base de datos.
+    """
     with Session(engine) as session:
         estaciones_BD = session.query(Estacion).all()
     estaciones_BD_stationID = [estacion.stationID for estacion in estaciones_BD]
     estaciones_filtradas = [estacion for estacion in estaciones if estacion[0] not in estaciones_BD_stationID]
-    print(f'se encontraron {len(estaciones_filtradas)} que no estaban en la base de datos')
+    print(f'se encontraron {len(estaciones_filtradas)} estaciones que no estaban en la base de datos')
     return estaciones_filtradas
     
 
-def buscar_estaciones_activas(estaciones:list[tuple])->list:
+def buscar_estaciones_activas(estaciones:list[tuple])->list[tuple]:
+    """
+    Recibe las estaciones que no están en la base de datos y devuelve aquellas estaciones
+    que están activas. 
+    """
     numero_error_conexion=0
     claves_api = obtener_api_keys()
     api_key=claves_api[0]
     estaciones_filtradas = []
     for estacion in estaciones:  
         stationId = estacion[0]
-        recurso=f'https://api.weather.com/v2/pws/dailysummary/7day?stationId={stationId}&format=json&units=m&apiKey={api_key}&numericPrecision=decimal'
-        try: 
-            # Mandatoriamente se debe indicar un tiempo límite de espera para evitar que la llamada quede inconclusa por falta de respuesta de la API
-            respuesta = requests.get(recurso,timeout=60,headers={'Cache-Control': 'cache-control: max-age=599'})
-            codigo_respusta=respuesta.status_code
-            # Status Code 200: OK. The request has succeeded.
-            # Status Code 204: No Data Found for specific query. The 204 status code will have an empty response body.
-            if (codigo_respusta==200 or codigo_respusta==204):
-                resumen_ultima_semana = respuesta.json()["summaries"] if codigo_respusta==200 else []
-                if resumen_ultima_semana != []: estaciones_filtradas.append(estacion)
-            elif (codigo_respusta==401):
-                # Status Code 401: Unauthorized. The request requires authentication.
-                imprimir_mensaje(situacion='api key desautorizada',status_code=codigo_respusta,vieja_api_key=api_key)
-                api_key=cambiar_api_key(conjunto_api_key=claves_api,api_key_actual=api_key)
-            elif (codigo_respusta==500):
-                imprimir_mensaje(situacion='el servidor no contesta',status_code=codigo_respusta)
-                una_hora=60*60
+        while True: 
+            recurso=f'https://api.weather.com/v2/pws/dailysummary/7day?stationId={stationId}&format=json&units=m&apiKey={api_key}&numericPrecision=decimal'
+            try: 
+                # Mandatoriamente se debe indicar un tiempo límite de espera para evitar que la llamada quede inconclusa por falta de respuesta de la API
+                respuesta = requests.get(recurso,timeout=60,headers={'Cache-Control': 'cache-control: max-age=599'})
+                codigo_respusta=respuesta.status_code
+                # Status Code 200: OK. The request has succeeded.
+                # Status Code 204: No Data Found for specific query. The 204 status code will have an empty response body.
+                if (codigo_respusta==200 or codigo_respusta==204):
+                    resumen_ultima_semana = respuesta.json()["summaries"] if codigo_respusta==200 else []
+                    if resumen_ultima_semana != []: estaciones_filtradas.append(estacion)
+                    # Se rompe el ciclo while una vez que se pudo consultar sobre la actividad de la estación
+                    break
+                elif (codigo_respusta==401):
+                    # Status Code 401: Unauthorized. The request requires authentication.
+                    imprimir_mensaje(situacion='api key desautorizada',status_code=codigo_respusta,vieja_api_key=api_key)
+                    api_key=cambiar_api_key(conjunto_api_key=claves_api,api_key_actual=api_key)
+                elif (codigo_respusta==500):
+                    imprimir_mensaje(situacion='el servidor no contesta',status_code=codigo_respusta)
+                    una_hora=60*60
+                    #Se pausa la ejecución para aguardar que normalicen el funcionamiento del servidor
+                    time.sleep(una_hora)
+                else:
+                    imprimir_mensaje(situacion='respesta del servidor desconocida',status_code=codigo_respusta,url=recurso)
+            except requests.exceptions.RequestException as error:
+                numero_error_conexion+=1
+                imprimir_mensaje(situacion='error de conexión',n_error_con=numero_error_conexion,problema=error)
+                un_minuto=60
                 #Se pausa la ejecución para aguardar que normalicen el funcionamiento del servidor
-                time.sleep(una_hora)
-            else:
-                imprimir_mensaje(situacion='respesta del servidor desconocida',status_code=codigo_respusta,url=recurso)
-        except requests.exceptions.RequestException as error:
-            numero_error_conexion+=1
-            imprimir_mensaje(situacion='error de conexión',n_error_con=numero_error_conexion,problema=error)
-            un_minuto=60
-            #Se pausa la ejecución para aguardar que normalicen el funcionamiento del servidor
-            time.sleep(un_minuto)
+                time.sleep(un_minuto)
     print(f'se encontraron {len(estaciones_filtradas)} estaciones activas (enviaron al menos un reporte en la última semana)')
     return estaciones_filtradas
 
-def insertar_estaciones_activas(estaciones):
+def insertar_estaciones_activas(estaciones:list[tuple])->None:
+    """
+    Recibe estaciones activas y las inserta en la base de datos. 
+    """
     with Session(engine) as session:
         # La fech de inicio de las nuevas estaciones se corresponde con la última fecha cargada en la base de datos
         resultado = session.execute(text('SELECT MAX(fecha) FROM reportes'))
@@ -203,9 +220,12 @@ def insertar_estaciones_activas(estaciones):
             )
             session.add(obj_estacion)
         session.commit()
-        print('se agregagaros todas las estaciones activas a la base de datos')
+        print('se agregaron todas las estaciones activas a la base de datos')
 
-def clasificar_estaciones():
+def clasificar_estaciones()->None:
+    """
+    Clasifica las estaciones encontradas y las guarda con sus respectivas etiquetas en un csv. 
+    """
     estaciones_clasificacion = []
     [estaciones_clasificacion.append(estacion+('activa',)) for estacion in estaciones_activas]
     [estaciones_clasificacion.append(estacion+('inactiva',)) for estacion in estaciones_nuevas if estacion not in estaciones_activas]
