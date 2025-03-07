@@ -12,10 +12,13 @@ import pandas as pd
 import geopandas as gpd
 from shapely.geometry import Point
 
-# engine = create_engine('postgresql+psycopg2://postgres:facundo@localhost/wunder')
-# engine.connect()
+engine = create_engine('postgresql+psycopg2://postgres:facundo@localhost/wunder')
+engine.connect()
 
-def buscar_estaciones_rectangulo():
+def buscar_estaciones_rectangulo()->list[tuple]:
+    """
+    Busca estaciones cercanas a los coordenadas contenidas en un rectángulo que contiene al polígono irregular de interés
+    """
     #Seteo de variables
     numero_llamada_global=0
     numero_llamada_api_key=0
@@ -24,21 +27,25 @@ def buscar_estaciones_rectangulo():
     api_key=claves_api[0]
     numero_error_conexion=0
     recurso=''
-    coordenadas_df = pd.read_csv('./busqueda_estaciones/puntos_rectangulo.txt')
     stationsID = []
     estaciones = []
+    # Lee el archivo que almacena las coordenadas ubicas dentro del rectángulo
+    coordenadas_df = pd.read_csv('./busqueda_estaciones/puntos_rectangulo.txt')
     for idx,coor in coordenadas_df.iterrows():
         if (numero_llamada_api_key==1400):
             imprimir_mensaje(situacion='llamada 1400',vieja_api_key=api_key)
             api_key=cambiar_api_key(conjunto_api_key=claves_api,api_key_actual=api_key)
             #Si se agotaron las api keys se rompe el bucle white
             if (api_key==''):
+                print(f'indice coordenada consultada: {idx}')
                 imprimir_mensaje(situacion='sin api keys',url=recurso)
-                break
+                return []
             numero_llamada_api_key=0
         lat = coor.loc['lat']
         lon = coor.loc['lon']
+        # El endpoint devuelve las estaciones más cercanas a la coordenada pasada como query, por lo general es 10 el número de estaciones devueltas.
         recurso=f'https://api.weather.com/v3/location/near?geocode={lat},{lon}&product=pws&format=json&apiKey={api_key}'
+        # Se crea este bucle while para garantizar que se va a realizar la llamada sobre la coordenada que se está iterando
         while True:
             try:
                 # Mandatoriamente se debe indicar un tiempo límite de espera para evitar que la llamada quede inconclusa por falta de respuesta de la API
@@ -51,22 +58,27 @@ def buscar_estaciones_rectangulo():
                 if (codigo_respusta==200):
                     estaciones_cercanas = respuesta.json()['location']
                     for i,est_carcana_stationID in enumerate(estaciones_cercanas['stationId']):
+                            # Se corroborra que la estación cercana no se haya recuperado en una consulta anterior
                             if (est_carcana_stationID not in stationsID):
                                 stationsID.append(est_carcana_stationID)
                                 est_cercana_latitud = estaciones_cercanas['latitude'][i]
                                 est_cercana_longitud = estaciones_cercanas['longitude'][i]
+                                # Se crea una tupla con el id de la estación, su latitud y su longitud
                                 est_datos = est_carcana_stationID,est_cercana_latitud,est_cercana_longitud
                                 estaciones.append(est_datos)
                             else:
                                 continue
+                    # Luego que se analizaron todas las estaciones próximas a la coordenada sobre la que se está iterando, se sale del bucle while para avanzar con la siguiente coordenada.
                     break        
                 elif (codigo_respusta==401):
                     # Status Code 401: Unauthorized. The request requires authentication.
                     imprimir_mensaje(situacion='api key desautorizada',status_code=codigo_respusta,vieja_api_key=api_key)
                     api_key=cambiar_api_key(conjunto_api_key=claves_api,api_key_actual=api_key)
-                    #Si se agotaron las api keys se rompe el bucle white
+                    #Si se agotaron las api keys se retorna una lista vacía
                     if (api_key==''):
-                        break
+                        print(f'indice coordenada consultada: {idx}')
+                        imprimir_mensaje(situacion='sin api keys',url=recurso)
+                        return []
                     numero_llamada_api_key=0
                 elif (codigo_respusta==500):
                     imprimir_mensaje(situacion='el servidor no contesta',status_code=codigo_respusta)
@@ -84,20 +96,14 @@ def buscar_estaciones_rectangulo():
                 un_minuto=60
                 #Se pausa la ejecución para aguardar que normalicen el funcionamiento del servidor
                 time.sleep(un_minuto)
-        #Sale del while y corroborra que se pueda pasar a la siguiente estación
-        if (api_key==''):
-            print(f'indice coordenada consultada: {idx}')
-            imprimir_mensaje(situacion='sin api keys',url=recurso)
-            break
+        
     imprimir_mensaje(situacion='fin ejecución',llamadas_totales=numero_llamada_global)
-    if api_key!='':
-        print(coordenadas_sin_consultar)
-        print(f'se encontraron {len(estaciones)} estaciones en el rectángulo')
-        return estaciones
-    else:
-        return []
+    print(coordenadas_sin_consultar)
+    print(f'se encontraron {len(estaciones)} estaciones en el rectángulo')
+    return estaciones
+ 
 
-def buscar_estaciones_poligono_irregular(estaciones:list[dict]):
+def buscar_estaciones_poligono_irregular(estaciones:list[tuple])->list[tuple]:
     #Leer el archivo KMZ
     kmz_path = "./busqueda_estaciones/poligono_cuencas.kmz"
     poligono = gpd.read_file(f"/vsizip/{kmz_path}")
@@ -130,7 +136,7 @@ def buscar_estaciones_poligono_irregular(estaciones:list[dict]):
     print(f'se encontraron {len(estaciones_filtradas)} estaciones en el polígono irregular')
     return estaciones_filtradas
 
-def buscar_estaciones_nuevas(estaciones:list[dict]):
+def buscar_estaciones_nuevas(estaciones:list[tuple])->list[tuple]:
     with Session(engine) as session:
         estaciones_BD = session.query(Estacion).all()
     estaciones_BD_stationID = [estacion.stationID for estacion in estaciones_BD]
@@ -139,7 +145,7 @@ def buscar_estaciones_nuevas(estaciones:list[dict]):
     return estaciones_filtradas
     
 
-def buscar_estaciones_activas(estaciones:list[dict]):
+def buscar_estaciones_activas(estaciones:list[tuple])->list:
     numero_error_conexion=0
     claves_api = obtener_api_keys()
     api_key=claves_api[0]
@@ -177,10 +183,10 @@ def buscar_estaciones_activas(estaciones:list[dict]):
     return estaciones_filtradas
 
 def insertar_estaciones_activas(estaciones):
-    with open('./ultima_fecha_carga_BD.txt','r') as csv:
-        lines = csv.read()
-        ultima_fecha = lines.rstrip('\n') # La fech de inicio de las nuevas estaciones se corresponde con la última fecha cargada en la base de datos
     with Session(engine) as session:
+        # La fech de inicio de las nuevas estaciones se corresponde con la última fecha cargada en la base de datos
+        resultado = session.execute(text('SELECT MAX(fecha) FROM reportes'))
+        ultima_fecha = resultado.mappings().all()[0]['max'] 
         for stationId,latitud,longitud in estaciones:
             #Creo el objetos_nu de la clase estación.
             # Tengo que imputar None a los faltantes para no tener problemas luego en la inserción de las estaciones.

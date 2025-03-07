@@ -32,10 +32,11 @@ class Base(DeclarativeBase):
     pass
 
 
+# La clase Estación representa a la tabla estaciones
 class Estacion(Base):
     __tablename__ = "estaciones"
     __table_args__ = {'extend_existing': True}
-
+    # atributos
     id_estacion: Mapped[int] = mapped_column(primary_key=True)
     stationID: Mapped[str] = mapped_column(String(20),unique=True)
     #lat: Mapped[float] = mapped_column(Float())
@@ -44,12 +45,14 @@ class Estacion(Base):
     inicio: Mapped[str] = mapped_column(DateTime(),nullable=True) # Se admite nulo porque no se conoce el inicio de las estacoines del lote 2
     comentario: Mapped[str] = mapped_column(String(50),nullable=True)
     #activa: Mapped[bool] = mapped_column(Boolean(),default=1)
+    # relacion 
     reportes: Mapped[List["Reporte"]] = relationship(back_populates="estacion")
     
     def __repr__(self) -> str:
         return f"stationID={self.stationID!r}"
     
 
+# La clase Reporte representa a la tabla reportes
 class Reporte(Base):
     __tablename__ = "reportes"
     # Defino la restricción para evitar registros que compartan el id de la estación y la fecha (reportes duplicados)
@@ -57,7 +60,7 @@ class Reporte(Base):
         UniqueConstraint('id_estacion','obsTimeLocal'),
         {'extend_existing': True}
     )
-
+    # atributos
     id_observacion: Mapped[int] = mapped_column(primary_key=True)
     id_estacion: Mapped[int] = mapped_column(ForeignKey("estaciones.id_estacion"),index=True)
     obsTimeLocal: Mapped[str] = mapped_column(DateTime())
@@ -78,6 +81,7 @@ class Reporte(Base):
     precipRate_mm_h : Mapped[float] = mapped_column(Float(),nullable=True,default=None)
     precipTotal_mm : Mapped[float] = mapped_column(Float(),nullable=True,default=None)
     dia_con_obs: Mapped[bool] = mapped_column(Boolean())
+    # relacion 
     estacion: Mapped[Estacion] = relationship(back_populates="reportes")
     
     def __repr__(self) -> str:

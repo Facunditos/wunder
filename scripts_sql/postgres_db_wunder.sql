@@ -82,7 +82,7 @@ from estaciones e
 join reportes r 
 on e.id_estacion = r.id_estacion 
 where (e."stationID"  like 'IROSAR100') and 
-	(r.fecha between '2025-01-01' and '2025-01-31');
+	(r.fecha between '2025-02-18' and '2025-02-21');
 
 -- según día
 
@@ -134,6 +134,14 @@ alter table estaciones
 add constraint estacones_ubicacion_point_chk
     check(st_geometrytype(ubicacion) = 'ST_Point'::text);
 
+select max(fecha)
+from reportes r;
+
+select count(*) 
+from reportes r
+where fecha < '2025-02-13';
+
+select extract (year from (select max(fecha) from reportes r));
 
 select count(*)
 from estaciones e ;
