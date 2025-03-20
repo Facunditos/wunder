@@ -148,6 +148,30 @@ group by id_estacion
 having max("precipTotal_mm") is not null
 order by 1;
 
+---------- Reinicio de la precipitación acumulada ----------------------------
+
+
+select r.fecha ,max(r."precipTotal_mm") 
+from estaciones e 
+join reportes r 
+on e.id_estacion = r.id_estacion 
+where 
+	e."stationID"  like 'ISANTAFE105'
+	and
+	r.fecha between '2024-11-01' and '2024-11-30'
+	and 
+	r."precipTotal_mm" >0
+group by fecha;
+
+select e."stationID",e.geom,r."obsTimeLocal",r."precipTotal_mm" 
+from estaciones e 
+join reportes r 
+on e.id_estacion = r.id_estacion 
+where 
+	e."stationID"  like 'ISANTAFE105'
+	and
+	r.fecha between '2024-11-06' and '2024-11-07';
+
 --drop table estaciones;
 CREATE TABLE estaciones (
   id_estacion int primary key,
