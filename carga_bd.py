@@ -26,7 +26,7 @@ def eliminar_reportes(session:sqlalchemy.orm.session.Session)->date:
 def cargar_reportes(estacion:Estacion,reportes:list,dia:date,session:sqlalchemy.orm.session.Session)->list:
     """
     Recibe una estación, los reportes asociados a la estación, la fecha de consulta y el objeto session.
-    Carga en el objeto session los reportes de la estación de la fecha consultada. 
+    Carga en el objeto session los reportes de la estación en la fecha consultada. 
     """
     # Si la lista de reportes está vacía significa que la estación no reportó en la fecha consultada. 
     if (len(reportes)==0):

@@ -15,6 +15,7 @@ from information_schema.tables
 where table_schema = 'public'
 order by 3 desc;
 
+
 ---------- Tabla estaciones ----------------------------
 
 select count(*) as cantidad_estaciones
@@ -56,12 +57,12 @@ from estaciones e
 join reportes r 
 on e.id_estacion = r.id_estacion 
 where 
-	r.fecha between '2025-02-04' and '2025-02-06'  
+	r.fecha between '2025-02-04' and '2025-02-06'
 	and 
-	ST_Contains(
-	-- se define una región para encontrar las estaciones localizadas en Firmat	
-	ST_Polygon('LINESTRING(-61.37 -33.54, -61.58 -33.54, -61.58 -33.39, -61.37 -33.39, -61.37 -33.54)'::geometry, 4326),
-	e.geom
+	ST_Contains( 	
+		-- se define una región para encontrar las estaciones localizadas en Firmat	
+		ST_Polygon('LINESTRING(-61.37 -33.54, -61.58 -33.54, -61.58 -33.39, -61.37 -33.39, -61.37 -33.54)'::geometry, 4326),
+		e.geom
 	);
 
 -- histórico región 
@@ -180,6 +181,19 @@ select id_estacion,count(*) as n_reportes_dato_lluvia_nulo
 from reportes r 
 where "precipTotal_mm" is null and dia_con_obs is true 
 group by id_estacion ;
+
+select count(*) as n_reportes_dato_lluvia_nulo
+from reportes r 
+where "precipTotal_mm" is null and dia_con_obs is true;
+
+select count(*) as n_reportes_dato_lluvia_nulo
+from reportes r 
+where "precipTotal_mm" is null and dia_con_obs is false;
+
+select count(*) as n_reportes_dato_lluvia_nulo
+from reportes r 
+where "precipTotal_mm" is null;
+
 
 select *
 from reportes r 
